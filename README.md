@@ -9,7 +9,7 @@
 
 top 명령어는 실시간으로 시스템의 프로세스와 메모리 사용 상태를 모니터링한다.
 
-![image](https://github.com/beom05/beom05/blob/main/linux_top.png)
+![image_top](https://github.com/beom05/beom05/blob/main/linux_top.png)
 
 ## 사용법: 터미널에서 top 입력
 
@@ -49,6 +49,8 @@ COMMAND: 실행된 명령어
 
 # ps 명령어
 ps 명령어는 현재 실행 중인 프로세스의 스냅샷을 보여준다.
+
+![image_ps](https://github.com/beom05/beom05/blob/main/linux_ps.png)
 
 ## 사용법: 터미널에서 ps 입력
 
