@@ -63,7 +63,7 @@ jobs 명령어는 현재 셸 세션에서 실행 중인 작업 목록을 보여�
 
 
 
-![image_jobs](https://github.com/beom05/beom05/commit/97f0b15faf29d36733f89b337a37cf9c4c6f9f17)
+![image_jobs](https://github.com/beom05/beom05/blob/main/linux_jobs.png)
 **아무것도 실행하지 않은 상태에서 jobs를 입력하면 아무것도 뜨지 않지만 프로세스 실행 후 jobs를 입력하면 실행중인 프로세스가 뜬다.**
 
 ## 사용법: 터미널에서 jobs 입력
