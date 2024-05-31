@@ -9,6 +9,8 @@
 
 top 명령어는 실시간으로 시스템의 프로세스와 메모리 사용 상태를 모니터링한다.
 
+![image](https://github.com/beom05/beom05/blob/main/linux_top.png)
+
 ## 사용법: 터미널에서 top 입력
 
 ## 주요 기능:
