@@ -1,110 +1,125 @@
-# top명령어
-## top명령어란 
+## 1. 개발환경 구축
+### 1-1. 다운로드
+- anaconda
+- vscode
 
-**실시간으로 CPU 사용률을 체크해주는 도구이다.**
+### 1-2. 아나콘다 가상환경 구축
+- conda env list                          (가상환경 목록 보기)
+- conda create -n developer python=3.11   (가상환경 생성)
+- conda activate eveloper                 (가상환경 접속)
+- pip list                                (가상환경의 라이브러리 목록 보기)
+- pip install pandas                      (pandas 라이브러리 설치)
+- cls                                     (화면 클리어)
 
-윈도우의 작업관리자랑 비슷하며, 리눅스를 사용하는 서버의 성능이나 
-현재 돌아가고 있는 상황을 볼 때
-사용한다.
+### 1-3. VSCODE 세팅
+1. Extensions 설치
+  - Python
+  - Prettier
+  - Python Extension Pack
+  - Atom Material Theme
+  - Atom Material Icons
+2. Settings
+  - [Mouse Wheel Zoom] 켜기
+3. Thema 설정
+4. 아나콘다 가상환경 주입
+  - [Ctrl] + [Shift] + [p] -> "Python: Select Interpreter" 클릭 후 "developer" 가상환경 클릭
 
-top 명령어는 실시간으로 시스템의 프로세스와 메모리 사용 상태를 모니터링한다.
+### 1-4. 명령어 단축키
+- [Ctrl] + [,] : Settings 열기
+- [Ctrl] + [`] : 터미널 열기
 
-## 사용법: 터미널에서 top 입력
-![image_top](https://github.com/beom05/beom05/blob/main/linux_top.png)
+## 2. 데이터베이스(Database)
+- 데이터를 효율적으로 관리하고 저장하는 시스템
 
-## 주요 기능:
-|명령어|기능|
-|-----|------|
-|PID |프로세스 ID|
-|USER|프로세스를 실행한 사용자|
-|PR|프로세스의 우선순위|
-|NI|프로세스의 nice 값|
-|VIRT|가상 메모리 사용량|
-|RES|실제 메모리 사용량|
-|SHR|공유 메모리 사용량|
-|S|프로세스 상태 (R: 실행 중, S: 대기, Z: 좀비, 등)|
-|%CPU|CPU 사용률|
-|%MEM|메모리 사용률|
-|TIME+|실행 시간|
-|COMMAND:|실행된 명령어|
+### 2-1. DBMS(데이터베이스 관리 시스템)
+1. 관계형 DB(RDB)
+  - 표(Table) 형태
+  - MariaDB, Oracle, MySQL, PostgreSQL
+  
+2. NoSQL
+  - 자유 형태
+  - MongoDB
 
-## 옵션:
-|옵션|기능|
-|----|-----|
-|-u [USER]|특정 사용자의 프로세스만 표시|
-|-p [PID]|특정 PID의 프로세스만 표시|
-|-n [ITERATIONS]|지정한 횟수만큼 업데이트 후 종료|
+### 2-2. SQL(구조질의어)
+  - DBMS에게 명령을 내리기 위한 언어
+  - 예) SELECT * FROM tbl_user;
 
-# ps 명령어
-**ps 명령어는 현재 실행 중인 프로세스의 스냅샷을 보여준다.**
+### 2-3. 설치 방법
+  1. 로컬 설치(설치파일 다운로드 직접 설치)
+  2. 로컬 도커
+  3. 클라우드
 
-## 사용법: 터미널에서 ps 입력
-![image_ps](https://github.com/beom05/beom05/blob/main/linux_ps.png)
+### 2-4. 데이터베이스 구조
+  1. DBMS(데이터베이스 관리 시스템) → MariaDB, MySQL, Oracle, PostgreSQL
+  2.    ㄴ Database → chosun
+  3.          ㄴ Table(표) → tbl_news
 
-## 주요 기능:
-|명령어|기능|
-|-----|------|
-|PID|프로세스 ID|
-|TTY|터미널 타입|
-|TIME|CPU 사용 시간|
-|CMD|실행된 명령어|
+  예) DataBase는 프로젝트 단위(일반적)
+  Database(쇼핑몰)
+    ㄴ Table(회원)
+    ㄴ Table(상품)
+    ㄴ Table(구매)
+    ㄴ Table(게시판)
+    ㄴ Table(고객센터)
 
-## 옵션:
-|옵션|기능|
-|----|-----|
-|-e 또는 -A|모든 프로세스 표시|
-|-f|자세한 포맷으로 출력|
-|-u [USER]|특정 사용자의 프로세스 표시|
-|-p [PID]|특정 PID의 프로세스 표시|
-|aux|모든 프로세스를 상세히 표시 (a 모든 사용자, u 사용자/CPU/메모리 사용률, x 터미널에 종속되지 않은 프로세스)|
+### 2-5. 데이터베이스 연결
+  - python ↔ Database
+  1. SQL 매핑: SQL작성해서 사용하는 방법
+  2. ORM(Object Realationship Mapping): 객체를 사용하는 방법
+  * 실무 → ORM 많이 사용
+            ㄴ SQL 복잡도 증가 한계 → SQL 매핑
 
-# jobs 명령어
-**jobs 명령어는 현재 셸 세션에서 실행 중인 작업 목록을 보여준다.**
+### 2-6. SQL 매핑
+  1. Connection 맺기 (IP, PORT, ID, PW)
+     python - Database 연결(다리 건설)
+      → IP: 컴퓨터의 주소
+      → PORT: 프로그램마다 포트(3306)
+      → ID&PW: 인증
+  2. Worker 생성(Cursor 객체)
+  3. Job 생성(SQL 작성)
+  4. Execute(실행 → Worker+Job)
+  5. 결과
 
+## 3. 도커
+  - 컨테이너 가상화 기술을 사용할 수 있는 프로그램
+  - 컨테이너를 사용하기 위해서는 → 도커엔진 + 도커이미지
+  - 도커이미지 → 도커 컨테이너의 설계 도면
+  - 도커엔진 → 도커이미지대로 컨테이너를 만들어서 실행
 
+### 3-1. 도커 명령어
+  - docker ps                      # 현재 실행중인 컨테이너 목록 확인
+  - docker images                  # 도커 이미지 목록 확인
+  - docker logs [컨테이너 이름]     # 도커 컨테이너 로그 확인
+  - docker run                     # 도커 컨테이너 실행
 
-![image_jobs](https://github.com/beom05/beom05/blob/main/linux_jobs.png)
-**아무것도 실행하지 않은 상태에서 jobs를 입력하면 아무것도 뜨지 않지만 프로세스 실행 후 jobs를 입력하면 실행중인 프로세스가 뜬다.**
-
-## 사용법: 터미널에서 jobs 입력
-
-## 주요 기능:
-|명령어|기능|
-|-----|------|
-|[N]|작업 번호|
-|Job State|작업 상태 (Running, Stopped, 등)|
-|Command|실행된 명령어|
-
-## 옵션:
-|옵션|기능|
-|----|-----|
-|-l|작업의 PID 표시|
-|-n|상태가 변경된 작업만 표시|
-|-p|각 작업의 프로세스 ID만 표시|
-
-# kill 명령어
-**kill 명령어는 지정한 프로세스를 종료한다.**
+  docker run --name mariadb -d -p 3306:3306 -e MARIADB_ROOT_PASSWORD=mariadb mariadb
 
 
-![image_kill](https://github.com/beom05/beom05/blob/main/linux_kill_.png)
-**kill 명령어 사용 후 jobs를 이용해 모든 프로세스가 종료되어있음을 확인**
 
-## 사용법: kill [옵션] PID
 
-## 주요 기능:
-|명령어|설명|
-|-----|------|
-|PID|종료할 프로세스의 ID|
 
-## 옵션:
-|옵션|기능|
-|----|-----|
-|-l|사용 가능한 신호 목록 표시|
-|-s [SIGNAL] PID|특정 신호를 사용하여 프로세스 종료 (기본은 SIGTERM)|
-|-9 PID|강제 종료 신호 (SIGKILL) 사용|
 
-## 예제:
 
-kill 1234: PID 1234인 프로세스에 기본 종료 신호 (SIGTERM) 전송
+## 99. 전체 시스템 구조(학습용) - WEB/APP
+- Client-Server 구조
+- *Client : 고객(웹 브라우저)
+- *Server : 회사(서비스를 동작하는 컴퓨터)
+- A(클라이언트) -> 카톡 -> 서버(카카오톡) -> 카톡 -> B(클라이언트)
 
-kill -9 1234: PID 1234인 프로세스를 강제 종료 (SIGKILL)
+1. 동작 순서
+  + 클라이언트(naver.com) 요청!
+  + 네이버 서버(메인 페이지에 필요한 소스들을 전송 -> 클라이언트)
+  + 클라이언트 소스 다운로드
+  + 클라이언트 랜더링
+
+2. 구조
+                    *네트워크*        *클라우드 컴퓨팅(AWS)*
+Client          -> 요청(request)  -> Server(LINUX) *운영체제*
+Client(랜더링)   <- 전송(response) <- ㄴ 컨테이너(도커)
+                                         ㄴ 프론트엔드(HTML, CSS, JS, React.js, Vue.js)
+                                         ㄴ 백엔드(Spring, FastAPI, Express, Django)
+                                         ㄴ *데이터베이스*(RDB, NoSQL) + SQL
+
+*프로그래밍 언어*(Python, JAVA)
+디자인 패턴
+*자료구조*
